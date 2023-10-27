@@ -1,0 +1,15 @@
+library(DBI)
+library(odbc)
+library(tidyverse)
+library(pool)
+library(shiny)
+library(shinydashboard)
+library(shinydashboardPlus)
+library(shinycssloaders)
+library(rhandsontable)
+library(glue)
+library(assertr)
+
+con <- dbConnect(odbc(), "OAO Cloud DB")
+
+zip_code_missing_query <- glue("SELECT * FROM AMBULATORY_POPULATION_ALL_MAPPED WHERE substr(ZIP_CODE,1,1) = '1' AND (ZIP_CODE_LAYER_A IS NULL OR LONGITUDE IS NULL) ORDER BY DISTINCT_MRN DESC")
