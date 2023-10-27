@@ -12,3 +12,10 @@ dashboardBody <- dashboardBody(tabItems(
     rHandsontableOutput("zip_code_table")
   )
 ))
+
+
+ui <- dashboardPage(
+  dashboardHeader(title = "Ambulatory Mapping Tables"),
+  sidebar,
+  body
+)
